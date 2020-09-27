@@ -1,0 +1,76 @@
+#directions {
+    font-size: 23px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+}
+
+.ol-zoom.ol-unselectable.ol-control {
+    top: 88%;
+    left: 97%;
+}
+
+.modo_mapa {
+    position: absolute;
+    right: 10px;
+}
+
+#layer {
+    width: 80px;
+}
+
+.imagP {
+    border: 5px solid gray;
+    width: 230px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.imagM {
+    border: 5px solid gray;
+    width: 210px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.divDireita{
+    float: right;
+    padding-top: 3px;
+}
+
+.divEsquerda{
+    width: 500px;
+}
+
+#label {
+    text-decoration: none;
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.ol-fix {
+    visibility: hidden;
+}
+
+.ol-popup {
+    font-size: 0.75em;
+    width: auto;
+    height: auto;
+}
+
+.ol-popup .ol-popupfeature {
+    width: auto;
+}
+
+.ol-legend.ol-unselectable.ol-control {
+    left: 70%;
+}

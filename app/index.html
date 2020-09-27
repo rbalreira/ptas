@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GeoSport</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+
+    <!-- Font-Awesome CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- OPENLAYERS DEBUG -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol-debug.css">
+
+    <!-- Font-Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- OPENLAYERS -->
+    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css">
+
+    <!-- OPENLAYERS EXTENSIONS -->
+    <link rel="stylesheet" href="https://viglino.github.io/ol-ext/dist/ol-ext.css">
+    <link rel="stylesheet" href="https://viglino.github.io/ol-ext/examples/style.css">
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+
+    <!--Google Maps Icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="logo" class="navbar-brand" href="index.html">GeoSport</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <input autocomplete="off" aria-label="Search" id="inputPesquisar" class=" typeahead form-control mr-sm-2"
+                placeholder="Pesquisar">
+            <input id="btnPesquisar" type="button" class="btn btn-primary" value="Pesquisar"
+                title="Clique aqui para pesquisar">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="directions"><i class="fas fa-directions" title="Direções"
+                            aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item modo_mapa">
+                    <button id="layer" class="btn btn-primary" title="Alterar modo do mapa">Mapa</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <div class="wrapper filter">
+
+        <!-- Sidebar -->
+        <nav id="sidebar_filters" class="bg-light">
+            <div class="sidebar-header">
+                <h5>Filtros</h5>
+            </div>
+
+            <div class="bs-example">
+                <ul class="nav nav-pills tabs">
+                    <li class="nav-item">
+                        <a id="linkpav" href="#pavilhoes" class="nav-link active" data-toggle="tab">Infraestruturas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="linkclubes" href="#clubes" class="nav-link" data-toggle="tab">Clubes/Universidade</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="pavilhoes">
+                        <div class="container table-responsive">
+                            <table class="table table-borderless table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th>Município:</th>
+                                        <td>
+                                            <select class="form-control select_pav" id="municipio_pav">
+                                                <option selected>Todos</option>
+                                            </select>
+                                        </td>
+                                        <th>Freguesia:</th>
+                                        <td>
+                                            <select class="form-control select_pav" id="freguesia_pav" disabled>
+                                                <option selected>Todas</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Modalidade:</th>
+                                        <td>
+                                            <select class="form-control select_pav" id="modalidade_pav">
+                                                <option selected>Todas</option>
+                                            </select>
+                                        </td>
+                                        <th>Coberto:</th>
+                                        <td>
+                                            <select class="form-control select_pav" id="coberto_pav">
+                                                <option selected>Ambos</option>
+                                                <option>Sim</option>
+                                                <option>Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Preço:</th>
+                                        <td>
+                                            <select class="form-control select_pav" id="preco_pav">
+                                                <option selected>Todos</option>
+                                                <option>0 - 5</option>
+                                                <option>6 - 10</option>
+                                                <option>11 - 15</option>
+                                                <option>16 - 20</option>
+                                                <option>21 - 25</option>
+                                                <option>26 - 30</option>
+                                                <option>31+</option>
+                                            </select>
+                                        </td>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button id="predefine_pav" class="btn btn-primary predefine"
+                                title="Voltar às opções por defeito">Predefinir</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="clubes">
+                        <div class="container table-responsive">
+                            <table class="table table-borderless table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th>Município:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="municipio_clubes">
+                                                <option selected>Todos</option>
+                                            </select>
+                                        </td>
+                                        <th>Freguesia:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="freguesia_clubes" disabled>
+                                                <option selected>Todas</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Modalidade:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="modalidade_clubes">
+                                                <option selected>Todos</option>
+                                            </select>
+                                        </td>
+                                        <th>Escalão:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="escalao_clubes" disabled>
+                                                <option selected>Todos</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Género:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="genero_clubes">
+                                                <option selected>Ambos</option>
+                                                <option>Masculino</option>
+                                                <option>Feminino</option>
+                                            </select>
+                                        </td>
+                                        <th>Adaptado:</th>
+                                        <td>
+                                            <select class="form-control select_clubes" id="adaptado_clubes">
+                                                <option selected>Ambos</option>
+                                                <option>Sim</option>
+                                                <option>Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button id="predefine_clubes" class="btn btn-primary predefine"
+                                title="Voltar às opções por defeito">Predefinir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse_filters" class="btn btn-info select_sidebarCollapse">
+                    <i class="fas fa-caret-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="caixaDirections" class="wrapper legend">
+
+        <!-- Sidebar -->
+        <nav id="sidebar_legend" class="bg-light">
+            <div class="sidebar-header">
+                <h5 id="testeDir">Detalhes</h5>
+            </div>
+
+            <div class="container" id="conteudo"></div>
+        </nav>
+
+        <div>
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse_legend" class="btn btn-info select_sidebarCollapse">
+                    <i class="fas fa-caret-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+
+    <!-- JQUERY CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- OPENLAYERS JS -->
+    <script src="https://openlayers.org/en/latest/build/ol.js"></script>
+
+    <script
+        src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
+
+    <!-- OPENLAYERS EXTENSIONS JS -->
+    <script src="https://viglino.github.io/ol-ext/dist/ol-ext.js"></script>
+
+    <!-- SWEETALERT CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <!--Typehead-->
+    <script src="js/Bootstrap-3-Typeahead-master/bootstrap3-typeahead.js"></script>
+    <script src="js/Bootstrap-3-Typeahead-master/bootstrap3-typeahead.min.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="js/main.js"></script>
+    <script src="js/filters.js"></script>
+
+
+</body>
+
+</html>
