@@ -22,6 +22,9 @@ Implementação de uma aplicação WebSIG que representa geograficamente a compo
 - [PostGIS](https://postgis.net/)
 - [pgRouting](https://pgrouting.org/)
 
+## Acesso
+[Aplicação](https://gis4cloud.com/ptas_grupo1_2019/ptas-gr1-2019/GeoSport/)
+
 ## Instalação
 1. Criar uma base de dados no PostgreSQL, usando a linha de comandos ou um GUI ([pgAdmin](https://www.pgadmin.org/), [DBeaver](https://dbeaver.io/)...)
 2. Alterar o role "[postgres]" do ficheiro de backup [database.sql](database.sql) para o role usado na base de dados criada no ponto anterior
