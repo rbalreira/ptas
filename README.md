@@ -1,16 +1,16 @@
 # Projeto Temático em Aplicações SIG
 Projeto no âmbito do [Módulo Temático em Aplicações SIG](https://www.ua.pt/pt/uc/13449) da licenciatura em [Tecnologias da Informação](https://www.ua.pt/pt/curso/63) da [Universidade de Aveiro - Escola Superior de Tecnologia e Gestão de Águeda](https://www.ua.pt/pt/estga).
 
-# Objetivo
+## Objetivo
 Implementação de uma aplicação WebSIG que representa geograficamente a componente desportiva da região de Aveiro e da Universidade de Aveiro e seus politécnicos. Possibilita, assim, que o utilizador encontre toda a informação pretendida de cada clube, equipa e das infraestruturas desportivas que existem na região de Aveiro. Restringindo a informação que é vista no mapa, o utilizador pode filtrar por várias condições: município (Ílhavo, Ovar, Estarreja…), freguesia (Borralha, Angeja, Recardães…), modalidade (futebol, basquetebol, andebol…), escalão (juniores, seniores), género (masculino e/ou feminino), se o campo é ou não coberto, se se pratica ou não desporto adaptado e preço.
 
-# Tecnologias
+## Tecnologias
 - [Microsoft Project](https://www.microsoft.com/pt-pt/microsoft-365/project/project-management-software)
 - UML
 - [Git](https://git-scm.com/)
 - HTML
 - CSS
-- Javascript
+- JavaScript
 - [jQuery](https://jquery.com/)
 - PHP
 - [OpenLayers](https://openlayers.org/)
@@ -22,7 +22,7 @@ Implementação de uma aplicação WebSIG que representa geograficamente a compo
 - [PostGIS](https://postgis.net/)
 - [pgRouting](https://pgrouting.org/)
 
-# Instalação
+## Instalação
 1. Criar uma base de dados no PostgreSQL, usando a linha de comandos ou um GUI ([pgAdmin](https://www.pgadmin.org/), [DBeaver](https://dbeaver.io/)...)
 2. Alterar o role "[postgres]" do ficheiro de backup [database.sql](database.sql) para o role usado na base de dados criada no ponto anterior
 3. Importar o ficheiro de backup da base de dados [database.sql](database.sql) para a base de dados criada no ponto 1.
@@ -30,10 +30,10 @@ Implementação de uma aplicação WebSIG que representa geograficamente a compo
 6. Copiar a aplicação Web para um web server ([XAMPP](https://www.apachefriends.org/index.html), [Laragon](https://laragon.org/)...)
 7. Iniciar a aplicação pelo ficheiro [index.html](app/index.html)
 
-# Documentação
+## Documentação
 - [Relatório](report.pdf)
 
-# Autores
+## Autores
 - Daniel Martins
 - Jorge Anjos
 - Pedro Ferreira
